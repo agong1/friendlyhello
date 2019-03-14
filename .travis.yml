@@ -1,0 +1,13 @@
+language: python
+
+sudo: required
+
+services:
+  - docker
+ 
+before_install:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker build -t whucecil/friendlyhello:$TRAVIS_BUILD_ID . 
+  - docker push whucecil/friendlyhello:$TRAVIS_BUILD_ID
+  
+  
